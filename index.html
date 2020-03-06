@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" href="assets/hero.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Где Уолли?</title>
+</head>
+
+<body>
+    <div class="container" id='wrap'>
+        <img id="hero" src="assets/hero.png" alt="hero" />
+        <div class="scoreContainer">
+            <div id="score-text">Score</div>
+            <div id="score-counter">0</div>
+        </div>
+    </div>
+
+    <script>
+        //Get the target element
+        const hero = document.querySelector("#hero");
+        //Add the click event listener
+        hero.addEventListener("click", () => {
+            //Dont forget call the functions here 
+            increaseScore();
+            moveHero();
+        });
+
+        //Increase score by 1
+        const increaseScore = () => {
+            //Get the content of the target element. The current value for score
+            const score = document.querySelector("#score-counter").innerHTML;
+            //Get the element to increase the value
+            const scoreHTML = document.querySelector("#score-counter");
+            //Cast the score value to Number type
+            let count = Number(score);
+            //Set the new score to the target element
+            scoreHTML.innerHTML = count + 1;
+        };
+
+        //Move the duck randomly 
+        const moveHero = () => {
+            let wrapWidth = wrap.clientWidth;
+            let wrapHeight = wrap.clientHeight;
+
+            hero.style.left = Math.floor((Math.random() * wrapWidth - 70)) + "px";
+            hero.style.top = Math.floor((Math.random() * wrapHeight - 70)) + "px";
+        };
+    </script>
+
+</body>
+
+</html>
